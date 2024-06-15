@@ -1,7 +1,8 @@
+#!/usr/bin/ env node
 
 import inquirer from "inquirer";
 import fs from "fs"
-import { ChildProcess } from "child_process";
+
 
 const dependencies = {
   nodemon: true,
@@ -49,7 +50,7 @@ async function createPackageJson() {
   });
 
   try {
-    await fs.promises.writeFile('packag.json', content);
+    await fs.promises.writeFile('package.json', content);
   } catch (err) {
     console.error('Error creating package.json:', err);
   }
@@ -81,16 +82,11 @@ app.listen(3000, () => {
 
 async function main() {
 
-  promptUser();
+ promptUser();
  createServerFile();
   createPackageJson();
-
-  console.log(
-    chalk.bgWhite(
-      chalk.black(` 🎉 Project '${projectName}' created successfully! 🎉 `)
-    )
-  );
-  
 }
 
 main();
+
+
